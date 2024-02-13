@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    internal class Day4
+    internal class Homeworks
     {
-        public void Homework()
+        public void Day4()
         {
             Console.Write("Enter your name:");
             string Name = Console.ReadLine();
@@ -29,9 +29,27 @@ namespace ChallengeApp
             else if (male && age < 18)
             {
                 Console.WriteLine("Niepełnoletni Mężczyzna");
+            }        
+        }
+        public void Day5() 
+        {
+            Console.Write("Enter a number: ");
+            string number = Console.ReadLine();
+            // mogłbym pierwsze przekonwertowac tą liczbę na inta ale nie ma to chyba sensu
+            char[] numberInArray = number.ToArray();
+            for (int i = 0; i < 10; i++)
+            {
+                int counter = 0;
+                foreach (var c in numberInArray)
+                {
+                    if (i == (c - '0'))
+                    {
+                        counter++;
+                    }
+
+                }
+                Console.WriteLine($"{i}=>{counter}");
             }
-           
-           
         }
        
     }
