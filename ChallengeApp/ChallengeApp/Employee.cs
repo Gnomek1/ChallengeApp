@@ -20,6 +20,12 @@ namespace ChallengeApp
             }
         }
 
+        public Employee(string FirstName, string LastName)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            
+        }
         public Employee(string FirstName,string LastName, int Age) 
         {
             this.FirstName = FirstName;
