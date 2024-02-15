@@ -8,17 +8,11 @@ namespace ChallengeApp
 {
     public class Employee
     {
-        private List<int> points = new List<int>();
+        private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
         public string LastName { get; private set;}
-        public int   Age { get; private set; }        
-        public int Result
-        {
-            get
-            {
-                return this.points.Sum();
-            }
-        }
+        public int   Age { get;  set; }        
+        
 
         public Employee(string FirstName, string LastName)
         {
@@ -26,35 +20,32 @@ namespace ChallengeApp
             this.LastName = LastName;
             
         }
-        public Employee(string FirstName,string LastName, int Age) 
-        {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Age = Age;
+      
+        public void AddGrade(float points) 
+        {            
+            this.grades.Add(points);
         }
-        public void AddPoints(int points) 
+        public void SubtractPoints(float points)
         {
-            if (points >=0 && points<=10) 
-            {
-                this.points.Add(points);
-            }
-            else
-            {
-                Console.WriteLine("Podaj wartość od 1 do 10");
-            }
-            
+         
+          this.grades.Add(points);
         }
-        public void SubtractPoints(int points)
+        public Statistics GetStatistics()
         {
-            if (points < 0 && points >= -10)
+            Statistics stat = new Statistics();
+            stat.Average = 0;
+            stat.Max = float.MinValue;
+            stat.Min = float.MaxValue;
+
+            foreach (var item in grades)
             {
-                this.points.Add(points);
-            }
-            else
-            {
-                Console.WriteLine("Podaj wartość od -1 do -10");
+                stat.Max = Math.Max(stat.Max, item);
+                stat.Min = Math.Min(stat.Min, item);
+                stat.Average += item;
             }
 
+            stat.Average = stat.Average/ grades.Count;
+            return stat;
         }
 
 

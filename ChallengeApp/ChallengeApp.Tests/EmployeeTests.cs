@@ -5,39 +5,54 @@ namespace ChallengeApp.Tests
     public class EmployeeTests
     {
         [Test]
-        public void WhenEmployeeScores30Points_ThenCorrectResult()
+
+        public void WhenResultMaxValue_ThenCorrectResult()
         {
-            //arange
-            var employee1 = new Employee("Peter", "Steel",5);
-            employee1.AddPoints(3);
-            employee1.AddPoints(5);
-            employee1.AddPoints(9);
-            employee1.AddPoints(1);
-            employee1.AddPoints(7);
-            employee1.AddPoints(3);
-            employee1.AddPoints(2);
-
-            //act
-            int result = employee1.Result;
-
-            //assert
-            Assert.AreEqual(30, result);
+            // arrange
+            var employee = new Employee("Varg", "Vikernes");
+            employee.AddGrade(1);
+            employee.AddGrade(6.66f);
+            employee.AddGrade(9);
+            int maxGrade = 9;
+            // act
+            var result = employee.GetStatistics();
+            // assert
+            Assert.AreEqual(maxGrade, result.Max);
         }
-       
         [Test]
-        public void WhenEmployeeAddAndSubtractPoints_ThenCorrectResult()
-        {
-            //arrange
-            var employee3 = new Employee("Peter", "Steel", 15);
-            employee3.AddPoints(3);
-            employee3.AddPoints(5);
-            employee3.SubtractPoints(-5);
-            employee3.SubtractPoints(-4);
-            //act
-            int result = employee3.Result;
 
-            //assert
-            Assert.AreEqual(-1,result);
+        public void WhenResultAverageValue_ThenCorrectResult()
+        {
+            // arrange
+            var employee = new Employee("Varg", "Vikernes");
+            employee.AddGrade(4);
+            employee.AddGrade(4.5f);
+            employee.AddGrade(4.5f);
+            employee.AddGrade(5f);
+            employee.AddGrade(5);
+            float avgGrade = 4.6f;
+            // act
+            var result = employee.GetStatistics();
+            // assert
+            Assert.AreEqual(avgGrade, result.Average);
         }
+        [Test]
+
+        public void WhenResultMinValue_ThenCorrectResult()
+        {
+            // arrange
+            var employee = new Employee("Varg", "Vikernes");
+            employee.AddGrade(4);
+            employee.AddGrade(4.5f);
+            employee.AddGrade(4.5f);
+            employee.AddGrade(5f);
+            employee.AddGrade(5);
+            float minGrade = 4f;
+            // act
+            var result = employee.GetStatistics();
+            // assert
+            Assert.AreEqual(minGrade, result.Min);
+        }
+        
     }
 }
