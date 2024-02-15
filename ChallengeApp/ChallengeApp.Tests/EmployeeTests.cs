@@ -23,21 +23,7 @@ namespace ChallengeApp.Tests
             //assert
             Assert.AreEqual(30, result);
         }
-        //[Test]
-        //public void WhenEmployeeScoresNegativePoints_ThenThrowError()
-        //{
-        //    //arrange
-        //    var employee2 = new Employee("Peter", "Steel", 10);
-        //    employee2.AddPoints(3);
-        //    employee2.AddPoints(5);
-        //    employee2.AddPoints(-10);
-        //    employee2.AddPoints(-1);
-        //    //act
-        //    int result= employee2.Result;
-
-        //    //asset
-        //    Assert.Negative(result);
-        //}
+       
         [Test]
         public void WhenEmployeeAddAndSubtractPoints_ThenCorrectResult()
         {

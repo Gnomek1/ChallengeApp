@@ -8,10 +8,10 @@ namespace ChallengeApp
 {
     public class Employee
     {
-        public List<int> points = new List<int>();
+        private List<int> points = new List<int>();
         public string FirstName { get; private set; }
-        public string LastName { get;  set;}
-        public int    Age { get; private set; }        
+        public string LastName { get; private set;}
+        public int   Age { get; private set; }        
         public int Result
         {
             get
