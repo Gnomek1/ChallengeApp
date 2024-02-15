@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    internal class Employee
+    public class Employee
     {
         public List<int> points = new List<int>();
         public string FirstName { get; private set; }
@@ -37,6 +37,18 @@ namespace ChallengeApp
                 Console.WriteLine("Podaj wartość od 1 do 10");
             }
             
+        }
+        public void SubtractPoints(int points)
+        {
+            if (points < 0 && points >= -10)
+            {
+                this.points.Add(points);
+            }
+            else
+            {
+                Console.WriteLine("Podaj wartość od -1 do -10");
+            }
+
         }
 
 
