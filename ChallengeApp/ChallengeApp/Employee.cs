@@ -22,9 +22,77 @@ namespace ChallengeApp
         }
       
         public void AddGrade(float points) 
-        {            
-            this.grades.Add(points);
+        {
+            if (points>=0 && points<=100)
+            {
+                this.grades.Add(points);
+            }
+            else 
+            {
+                Console.WriteLine("Invalid data");
+            }            
         }
+
+        public void AddGrade(string points)
+        {
+            if (float.TryParse(points, out float result)) 
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+        public void AddGrade (int points) 
+        {
+            var result = (float)points;
+            if (result >= 0 && result <= 100)
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid data");
+            }
+        }
+        public void AddGrade(double points)
+        {
+            float result = (float)points;
+            if (result >= 0 && result <= 100)
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid data");
+            }
+        }
+        public void AddGrade(decimal points)
+        {
+            float result = (float)points;
+            if (result >= 0 && result <= 100)
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid data");
+            }
+        }
+
+        public void AddGrade(long points)
+        {
+            if (float.TryParse(points, out float result))
+            {
+                AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
+        }
+
         public void SubtractPoints(float points)
         {
          
