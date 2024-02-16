@@ -81,17 +81,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(long points)
-        {
-            if (float.TryParse(points, out float result))
-            {
-                AddGrade(result);
-            }
-            else
-            {
-                Console.WriteLine("String is not float");
-            }
-        }
+       
 
         public void SubtractPoints(float points)
         {
