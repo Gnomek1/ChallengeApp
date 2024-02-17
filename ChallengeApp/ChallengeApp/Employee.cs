@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -88,7 +89,7 @@ namespace ChallengeApp
          
           this.grades.Add(points);
         }
-        public Statistics GetStatistics()
+        public Statistics GetStatisticsWithForEach()
         {
             Statistics stat = new Statistics();
             stat.Average = 0;
@@ -105,6 +106,61 @@ namespace ChallengeApp
             stat.Average = stat.Average/ grades.Count;
             return stat;
         }
+        public Statistics GetStatisticsWithFor()
+        {
+            Statistics stat = new Statistics();
+            stat.Average = 0;
+            stat.Max = float.MinValue;
+            stat.Min = float.MaxValue;
+
+            for (int i = 0; i < grades.Count; i++)
+            {
+                stat.Max = Math.Max(stat.Max, grades[i]);
+                stat.Min = Math.Min(stat.Min, grades[i]);
+                stat.Average += grades[i];
+            }
+
+            stat.Average = stat.Average / grades.Count;
+            return stat;
+        }
+        public Statistics GetStatisticsWithWhile()
+        {
+            Statistics stat = new Statistics();
+            stat.Average = 0;
+            stat.Max = float.MinValue;
+            stat.Min = float.MaxValue;
+            int index = 0;
+
+            while (index < this.grades.Count) 
+            {
+                stat.Max = Math.Max(stat.Max, this.grades[index]);
+                stat.Min = Math.Min(stat.Min, this.grades[index]);
+                stat.Average += this.grades[index];
+                index++;
+            } 
+
+            stat.Average = stat.Average / grades.Count;
+            return stat;
+        }
+
+        public Statistics GetStatisticsWithDoWhile()
+        {
+            Statistics stat = new Statistics();
+            stat.Average = 0;
+            stat.Max = float.MinValue;
+            stat.Min = float.MaxValue;
+            int index = 0;
+            do
+            {
+                stat.Max = Math.Max(stat.Max, this.grades[index]);
+                stat.Min = Math.Min(stat.Min, this.grades[index]);
+                stat.Average += this.grades[index];
+                index++;
+            } while (index < this.grades.Count);
+            stat.Average = stat.Average / grades.Count;
+            return stat;
+        }
+
 
 
     }
