@@ -4,16 +4,25 @@
     {
         static void Main(string[] args)
         {
-
             Employee employee1 = new Employee("Varg", "Vikernes");
-            employee1.AddGrade(3.5f);           
-            employee1.AddGrade(5f);
-            employee1.AddGrade(6.5f);
-            employee1.AddGrade("3");            
-            employee1.AddGrade(4);
-
+            Console.WriteLine("Witamy w pragoramie do oceny pracowników");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine();
+            
+            while (true) 
+            {
+                Console.WriteLine("pisząc q wyjdziesz z dodania kolejnych ocen");
+                Console.Write("Podaj ocenę pracownika:");
+                var input = Console.ReadLine();
+                if (input == "q")
+                {
+                    break;
+                }
+                employee1.AddGrade(input);
+            }
+            
             var stat1 = employee1.GetStatistics();
-            Console.WriteLine($"foreach:  Srednia ocena: {Math.Round(stat1.Average, 2)} , Maksymalnia ocena: {stat1.Max}, Minimalna ocena: {stat1.Min}");
+            Console.WriteLine($"Srednia ocena: {Math.Round(stat1.Average, 2)} , Maksymalna ocena: {stat1.Max}, Minimalna ocena: {stat1.Min} Ocena jako Litera: {stat1.AverageLetter}");
 
            
         }

@@ -6,53 +6,42 @@ namespace ChallengeApp.Tests
     {
         [Test]
 
-        public void WhenResultMaxValue_ThenCorrectResult()
+        public void WhenCollectGradesDiferentTypes_ThenCorrectResult()
         {
             // arrange
             var employee = new Employee("Varg", "Vikernes");
-            employee.AddGrade(1);
-            employee.AddGrade(6.66f);
-            employee.AddGrade(9);
-            int maxGrade = 9;
+            employee.AddGrade("100");
+            employee.AddGrade('a');
+            employee.AddGrade("a");
+            employee.AddGrade(100);
+            employee.AddGrade(100.00f);
+            employee.AddGrade(100.00);
+
             // act
             var result = employee.GetStatistics();
             // assert
-            Assert.AreEqual(maxGrade, result.Max);
+            Assert.AreEqual(100, result.Max);
         }
         [Test]
 
-        public void WhenResultAverageValue_ThenCorrectResult()
+        public void WhenCollectGrades_ThenCorrectResult()
         {
             // arrange
             var employee = new Employee("Varg", "Vikernes");
-            employee.AddGrade(4);
-            employee.AddGrade(4.5f);
-            employee.AddGrade(4.5f);
-            employee.AddGrade(5f);
-            employee.AddGrade(5);
-            float avgGrade = 4.6f;
+            employee.AddGrade(90);
+            employee.AddGrade(40);
+            employee.AddGrade('c');
+            employee.AddGrade("A");
+           
             // act
             var result = employee.GetStatistics();
             // assert
-            Assert.AreEqual(avgGrade, result.Average);
-        }
-        [Test]
+            Assert.AreEqual(72.5f, result.Average);
+            Assert.AreEqual(40, result.Min);
+            Assert.AreEqual(100, result.Max);
+            Assert.AreEqual('B', result.AverageLetter);
 
-        public void WhenResultMinValue_ThenCorrectResult()
-        {
-            // arrange
-            var employee = new Employee("Varg", "Vikernes");
-            employee.AddGrade(4);
-            employee.AddGrade(4.5f);
-            employee.AddGrade(4.5f);
-            employee.AddGrade(5f);
-            employee.AddGrade(5);
-            float minGrade = 4f;
-            // act
-            var result = employee.GetStatistics();
-            // assert
-            Assert.AreEqual(minGrade, result.Min);
         }
-        
+     
     }
 }

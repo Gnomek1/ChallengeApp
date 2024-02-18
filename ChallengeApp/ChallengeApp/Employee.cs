@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -33,23 +34,61 @@ namespace ChallengeApp
                 Console.WriteLine("Invalid data");
             }            
         }
-
-        public void AddGrade(string points)
+        public void AddGrade(double points)
         {
-            if (float.TryParse(points, out float result)) 
+            float gradeAsFloat = (float)points;
+            this.AddGrade(gradeAsFloat);
+        }
+       public void AddGrade(string points)
+        {
+            if(float.TryParse(points, out float result))
             {
-                AddGrade(result);
+                this.AddGrade(result);
+            }
+            else if (char.TryParse(points, out char resultChar))
+            {
+                AddGrade(resultChar);
             }
             else
             {
-                Console.WriteLine("String is not float");
+                Console.WriteLine( "Invalid data");
             }
         }
-       
-      
-       
+         
+    
+    public void AddGrade(char points)
+        {
+            switch (points)
+            {
+                case 'A':
+                case 'a':
+                    AddGrade(100);
+                    break;
+                case 'B':
+                case 'b':
+                    AddGrade(80);
+                    break;
+                case 'C':
+                case 'c':
+                    AddGrade(60);
+                    break;
+                case 'D':
+                case 'd':
+                    AddGrade(40);
+                    break;
+                case 'E':
+                case 'e':
+                    AddGrade(20);
+                    break;
+                
+                default:
+                    Console.WriteLine("Wrong letter");
+                   // AddGrade(0);
+                    break;
+            }
+           
+        }
 
-       
 
         public void SubtractPoints(float points)
         {
@@ -71,6 +110,24 @@ namespace ChallengeApp
             }
 
             stat.Average = stat.Average/ grades.Count;
+            switch (stat.Average)
+            {
+                case var a when a>= 80:
+                    stat.AverageLetter = 'A';
+                    break;
+                case var a when a >= 60:
+                    stat.AverageLetter = 'B';
+                    break;
+                case var a when a >= 40:
+                    stat.AverageLetter = 'C';
+                    break;
+                case var a when a >= 20:
+                    stat.AverageLetter = 'D';
+                    break;
+                default:
+                    stat.AverageLetter = 'E';
+                    break;
+            }
             return stat;
         }
        
