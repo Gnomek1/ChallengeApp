@@ -87,7 +87,14 @@ namespace ChallengeApp
 
         public void SubtractPoints(float points)
         {
-            this.grades.Add(points);
+            if (points < 0 && points >= -100)
+            {
+                this.grades.Add(points);
+            }
+            else
+            {
+                throw new Exception("Please enter correct neagtive value");
+            }
         }
 
         public Statistics GetStatistics()
