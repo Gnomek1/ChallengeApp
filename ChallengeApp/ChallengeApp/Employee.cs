@@ -87,7 +87,6 @@ namespace ChallengeApp
 
         public void SubtractPoints(float points)
         {
-         
           this.grades.Add(points);
         }
 
