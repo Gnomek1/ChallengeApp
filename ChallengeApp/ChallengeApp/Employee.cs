@@ -8,17 +8,23 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public int Age { get; set; }
 
-        public Employee(string FirstName, string LastName)
+        public Employee(string FirstName, string LastName, string Sex, int Age)
+            : base(FirstName, LastName, Sex, Age)
         {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
+
+        }
+        public Employee(string FirstName, string LastName)
+            : base(FirstName, LastName)
+        {
+
+        }
+        public Employee()
+            :this("No FirstName","No LastName")
+        {
 
         }
 
