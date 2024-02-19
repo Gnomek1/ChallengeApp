@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public  class Supervisor :IEmployee
     {
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Sex { get; private set; }
 
-        public Employee(string FirstName, string LastName, string Sex)            
+        public Supervisor(string FirstName, string LastName, string Sex)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Sex = Sex;
         }
-        public Employee(string FirstName, string LastName)
+        public Supervisor(string FirstName, string LastName)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
@@ -58,7 +56,61 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception("Invalid data");
+                switch (points)
+                {
+                    case "6":                    
+                        AddGrade(100);
+                        break;
+                    case "+5":
+                    case "5+":
+                        AddGrade(85);
+                        break;
+                    case "5":
+                        AddGrade(80);
+                        break;
+                    case "-5":
+                    case "5-":
+                        AddGrade(75);
+                        break;
+                    case "+4":
+                    case "4+":
+                        AddGrade(65);
+                        break;
+                    case "4":
+                        AddGrade(60);
+                        break;
+                    case "-4":
+                    case "4-":
+                        AddGrade(55);
+                        break;
+                    case "+3":
+                    case "3+":
+                        AddGrade(45);
+                        break;
+                    case "3":
+                        AddGrade(40);
+                        break;
+                    case "3-":
+                    case "-3":
+                        AddGrade(35);
+                        break;
+                    case "+2":
+                    case "2+":
+                        AddGrade(25);
+                        break;
+                    case "2":
+                        AddGrade(20);
+                        break;
+                    case "-2":
+                    case "2-":
+                        AddGrade(15);
+                        break;
+                    case "1":
+                        AddGrade(0);
+                        break;
+                    default:
+                        throw new Exception("Wrong number");
+                }
             }
         }
 
@@ -140,3 +192,4 @@ namespace ChallengeApp
         }
     }
 }
+
