@@ -11,19 +11,21 @@ namespace ChallengeApp
     public class Employee : Person
     {
         private List<float> grades = new List<float>();
-
-        public Employee(string FirstName, string LastName, string Sex, int Age)
-            : base(FirstName, LastName, Sex, Age)
+        
+        public Employee(string FirstName, string LastName, string Sex)
+            : base(FirstName, LastName, Sex)
         {
 
         }
+
         public Employee(string FirstName, string LastName)
             : base(FirstName, LastName)
         {
 
         }
+
         public Employee()
-            :this("No FirstName","No LastName")
+            : this("No FirstName", "No LastName")
         {
 
         }
