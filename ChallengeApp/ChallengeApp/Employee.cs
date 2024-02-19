@@ -10,6 +10,7 @@ namespace ChallengeApp
 {
     public class Employee
     {
+       
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
         public string LastName { get; private set;}
@@ -31,8 +32,8 @@ namespace ChallengeApp
             }
             else 
             {
-                Console.WriteLine("Invalid data");
-            }            
+                throw new Exception("Invalid data");
+;            }            
         }
         public void AddGrade(double points)
         {
@@ -50,8 +51,8 @@ namespace ChallengeApp
                 AddGrade(resultChar);
             }
             else
-            {
-                Console.WriteLine( "Invalid data");
+            { 
+                throw new Exception("Invalid data");
             }
         }
          
@@ -82,9 +83,7 @@ namespace ChallengeApp
                     break;
                 
                 default:
-                    Console.WriteLine("Wrong letter");
-                   // AddGrade(0);
-                    break;
+                    throw new Exception("Wrong Letter");                    
             }
            
         }
@@ -130,9 +129,6 @@ namespace ChallengeApp
             }
             return stat;
         }
-       
-
-
-
+ 
     }
 }

@@ -18,7 +18,14 @@
                 {
                     break;
                 }
-                employee1.AddGrade(input);
+                try
+                {
+                    employee1.AddGrade(input);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Exception catched {e.Message}");
+                }
             }
             
             var stat1 = employee1.GetStatistics();
