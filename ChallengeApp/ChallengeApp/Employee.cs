@@ -10,38 +10,39 @@ namespace ChallengeApp
 {
     public class Employee
     {
-       
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
-        public string LastName { get; private set;}
-        public int   Age { get;  set; }        
-        
+        public string LastName { get; private set; }
+        public int Age { get; set; }
+
         public Employee(string FirstName, string LastName)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
-            
+
         }
-      
-        public void AddGrade(float points) 
+
+        public void AddGrade(float points)
         {
-            if (points>=0 && points<=100)
+            if (points >= 0 && points <= 100)
             {
                 this.grades.Add(points);
             }
-            else 
+            else
             {
                 throw new Exception("Invalid data");
-;            }            
+            }
         }
+
         public void AddGrade(double points)
         {
             float gradeAsFloat = (float)points;
             this.AddGrade(gradeAsFloat);
         }
-       public void AddGrade(string points)
+
+        public void AddGrade(string points)
         {
-            if(float.TryParse(points, out float result))
+            if (float.TryParse(points, out float result))
             {
                 this.AddGrade(result);
             }
@@ -50,12 +51,12 @@ namespace ChallengeApp
                 AddGrade(resultChar);
             }
             else
-            { 
+            {
                 throw new Exception("Invalid data");
             }
         }
-    
-    public void AddGrade(char points)
+
+        public void AddGrade(char points)
         {
             switch (points)
             {
@@ -79,15 +80,14 @@ namespace ChallengeApp
                 case 'e':
                     AddGrade(20);
                     break;
-                
                 default:
-                    throw new Exception("Wrong Letter");                    
-            }   
+                    throw new Exception("Wrong Letter");
+            }
         }
 
         public void SubtractPoints(float points)
         {
-          this.grades.Add(points);
+            this.grades.Add(points);
         }
 
         public Statistics GetStatistics()
@@ -103,11 +103,11 @@ namespace ChallengeApp
                 stat.Min = Math.Min(stat.Min, item);
                 stat.Average += item;
             }
-            stat.Average = stat.Average/ grades.Count;
+            stat.Average = stat.Average / grades.Count;
 
             switch (stat.Average)
             {
-                case var a when a>= 80:
+                case var a when a >= 80:
                     stat.AverageLetter = 'A';
                     break;
                 case var a when a >= 60:
@@ -125,6 +125,5 @@ namespace ChallengeApp
             }
             return stat;
         }
- 
     }
 }
