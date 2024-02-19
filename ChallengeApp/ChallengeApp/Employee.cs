@@ -16,7 +16,6 @@ namespace ChallengeApp
         public string LastName { get; private set;}
         public int   Age { get;  set; }        
         
-
         public Employee(string FirstName, string LastName)
         {
             this.FirstName = FirstName;
@@ -55,7 +54,6 @@ namespace ChallengeApp
                 throw new Exception("Invalid data");
             }
         }
-         
     
     public void AddGrade(char points)
         {
@@ -84,16 +82,15 @@ namespace ChallengeApp
                 
                 default:
                     throw new Exception("Wrong Letter");                    
-            }
-           
+            }   
         }
-
 
         public void SubtractPoints(float points)
         {
          
           this.grades.Add(points);
         }
+
         public Statistics GetStatistics()
         {
             Statistics stat = new Statistics();
@@ -107,8 +104,8 @@ namespace ChallengeApp
                 stat.Min = Math.Min(stat.Min, item);
                 stat.Average += item;
             }
-
             stat.Average = stat.Average/ grades.Count;
+
             switch (stat.Average)
             {
                 case var a when a>= 80:
