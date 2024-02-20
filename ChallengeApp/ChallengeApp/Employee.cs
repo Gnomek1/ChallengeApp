@@ -13,19 +13,11 @@ namespace ChallengeApp
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public string Sex { get; private set; }
-
-        public Employee(string FirstName, string LastName, string Sex)            
-        {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Sex = Sex;
-        }
+       
         public Employee(string FirstName, string LastName)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
-            this.Sex = "none";
         }
 
         public void AddGrade(float points)
@@ -36,7 +28,7 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception("Invalid data");
+                throw new Exception("Invalid data(float method)");
             }
         }
 
@@ -58,7 +50,7 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception("Invalid data");
+                throw new Exception("Invalid data (string method)");
             }
         }
 
@@ -87,7 +79,7 @@ namespace ChallengeApp
                     AddGrade(20);
                     break;
                 default:
-                    throw new Exception("Wrong Letter");
+                    throw new Exception("Wrong Letter (char method)");
             }
         }
 

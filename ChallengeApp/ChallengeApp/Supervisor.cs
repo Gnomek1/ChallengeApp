@@ -11,19 +11,11 @@ namespace ChallengeApp
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public string Sex { get; private set; }
-
-        public Supervisor(string FirstName, string LastName, string Sex)
-        {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.Sex = Sex;
-        }
+        
         public Supervisor(string FirstName, string LastName)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
-            this.Sex = "none";
         }
 
         public void AddGrade(float points)
@@ -34,7 +26,7 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception("Invalid data");
+                throw new Exception("Invalid data (float method)");
             }
         }
 
@@ -48,17 +40,9 @@ namespace ChallengeApp
         {
             if (float.TryParse(points, out float result))
             {
-                this.AddGrade(result);
-            }
-            else if (char.TryParse(points, out char resultChar))
-            {
-                AddGrade(resultChar);
-            }
-            else
-            {
                 switch (points)
                 {
-                    case "6":                    
+                    case "6":
                         AddGrade(100);
                         break;
                     case "+5":
@@ -109,8 +93,16 @@ namespace ChallengeApp
                         AddGrade(0);
                         break;
                     default:
-                        throw new Exception("Wrong number");
+                        throw new Exception("number is out of range (string method)");
                 }
+            }
+            else if (char.TryParse(points, out char resultChar))
+            {
+                AddGrade(resultChar);
+            }
+            else
+            {
+                this.AddGrade(result);
             }
         }
 
