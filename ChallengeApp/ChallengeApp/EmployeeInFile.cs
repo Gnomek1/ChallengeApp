@@ -9,17 +9,23 @@ namespace ChallengeApp
     public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grade.txt";
+        public override event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string FirstName, string LastName) : base(FirstName, LastName)
         {
         }
 
         public override void AddGrade(float points)
         {
+           
             if (points >= 0 && points <= 100)
             {
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(points);
+                }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
             else

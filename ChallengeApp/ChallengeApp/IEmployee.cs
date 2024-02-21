@@ -11,6 +11,8 @@ namespace ChallengeApp
         string FirstName { get; }
         string LastName { get; }
 
+        event EmployeeBase.GradeAddedDelegate GradeAdded;
+
         void AddGrade(float points);
         void AddGrade(double points);
         void AddGrade(string points);

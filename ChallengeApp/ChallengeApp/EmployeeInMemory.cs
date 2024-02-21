@@ -8,23 +8,30 @@ namespace ChallengeApp
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
         private List<float> grades = new List<float>();
+
         public EmployeeInMemory(string FirstName, string LastName) 
             : base(FirstName, LastName)
         {
-
         }
+
         public override void AddGrade(float points)
         {
             if (points >= 0 && points <= 100)
             {
                 this.grades.Add(points);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
                 throw new Exception("Invalid data(float method)");
             }
         }
+
         public override void AddGrade(double points)
         {
             float gradeAsFloat = (float)points;
