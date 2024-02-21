@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp
 {
-    public  class Supervisor :IEmployee
+    public  class Supervisor
     {
         private List<float> grades = new List<float>();
         public string FirstName { get; private set; }
