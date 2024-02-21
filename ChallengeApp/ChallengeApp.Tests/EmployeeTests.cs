@@ -9,7 +9,7 @@ namespace ChallengeApp.Tests
         public void WhenCollectGradesDiferentTypes_ThenCorrectResult()
         {
             // arrange
-            var employee = new Employee("Varg", "Vikernes");
+            var employee = new EmployeeInMemory("Varg", "Vikernes");
             employee.AddGrade("100");
             employee.AddGrade('a');
             employee.AddGrade("a");
@@ -27,7 +27,7 @@ namespace ChallengeApp.Tests
         public void WhenCollectGrades_ThenCorrectResult()
         {
             // arrange
-            var employee = new Employee("Varg", "Vikernes");
+            var employee = new EmployeeInMemory("Varg", "Vikernes");
             employee.AddGrade(90);
             employee.AddGrade(40);
             employee.AddGrade('c');
