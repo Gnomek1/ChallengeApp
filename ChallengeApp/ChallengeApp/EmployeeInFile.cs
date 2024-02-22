@@ -16,7 +16,7 @@ namespace ChallengeApp
 
         public override void AddGrade(float points)
         {
-           
+
             if (points >= 0 && points <= 100)
             {
                 using (var writer = File.AppendText(fileName))
@@ -59,19 +59,19 @@ namespace ChallengeApp
         {
             switch (points)
             {
-                case 'A'or'a':
+                case 'A' or 'a':
                     AddGrade(100);
                     break;
-                case 'B'or'b':
+                case 'B' or 'b':
                     AddGrade(80);
                     break;
-                case 'C'or'c':
+                case 'C' or 'c':
                     AddGrade(60);
                     break;
-                case 'D'or'd':
+                case 'D' or 'd':
                     AddGrade(40);
                     break;
-                case 'E'or 'e':
+                case 'E' or 'e':
                     AddGrade(20);
                     break;
                 default:
@@ -84,44 +84,18 @@ namespace ChallengeApp
             var stats = new Statistics();
             if (File.Exists(fileName))
             {
-                stats.Average = 0;
-                stats.Max = float.MinValue;
-                stats.Min = float.MaxValue;
-                int count = 0;
-            using (var reader = File.OpenText(fileName))
-            {
-                var line = reader.ReadLine();
-                   while (line != null)
-                   {
-                        var number = float.Parse(line);
-                        stats.Max=Math.Max(number, stats.Max);
-                        stats.Min=Math.Min(number, stats.Min);
-                        stats.Average += number;
-                        count++;
-                        line=reader.ReadLine();
-                   }
-                }
-                stats.Average = stats.Average / count;
-                switch (stats.Average)
+                using (var reader = File.OpenText(fileName))
                 {
-                    case var a when a >= 80:
-                        stats.AverageLetter = 'A';
-                        break;
-                    case var a when a >= 60:
-                        stats.AverageLetter = 'B';
-                        break;
-                    case var a when a >= 40:
-                        stats.AverageLetter = 'C';
-                        break;
-                    case var a when a >= 20:
-                        stats.AverageLetter = 'D';
-                        break;
-                    default:
-                        stats.AverageLetter = 'E';
-                        break;
+                    var line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        var number = float.Parse(line);
+                        stats.AddGrade(number);
+                        line = reader.ReadLine();
+                    }
                 }
             }
-            
+
             return stats;
         }
 

@@ -86,35 +86,9 @@ namespace ChallengeApp
         public override Statistics GetStatistics()
         {
             Statistics stat = new Statistics();
-            stat.Average = 0;
-            stat.Max = float.MinValue;
-            stat.Min = float.MaxValue;
-
-            foreach (var item in grades)
+            foreach (var item in this.grades)
             {
-                stat.Max = Math.Max(stat.Max, item);
-                stat.Min = Math.Min(stat.Min, item);
-                stat.Average += item;
-            }
-            stat.Average = stat.Average / grades.Count;
-
-            switch (stat.Average)
-            {
-                case var a when a >= 80:
-                    stat.AverageLetter = 'A';
-                    break;
-                case var a when a >= 60:
-                    stat.AverageLetter = 'B';
-                    break;
-                case var a when a >= 40:
-                    stat.AverageLetter = 'C';
-                    break;
-                case var a when a >= 20:
-                    stat.AverageLetter = 'D';
-                    break;
-                default:
-                    stat.AverageLetter = 'E';
-                    break;
+                stat.AddGrade(item);
             }
             return stat;
         }

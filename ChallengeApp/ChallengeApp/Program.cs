@@ -8,7 +8,7 @@
             Console.WriteLine("----------------------------------------");
             Console.WriteLine();
 
-            var employee = new EmployeeInMemory("Varg", "Vikernes");
+            var employee = new EmployeeInFile("Varg", "Vikernes");
 
             employee.GradeAdded += EmployeeGradeAdded;
 
@@ -37,6 +37,7 @@
                     Console.WriteLine($"Exception catched {e.Message}");
                 }
             }
+            Console.WriteLine($"\nMax: {stat1.Max}\nMin: {stat1.Min}\nAvg: {stat1.AverageLetter}\nAvg Letter: {stat1.AverageLetter}\n");
         }
     }
 }
